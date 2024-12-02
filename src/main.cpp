@@ -1,24 +1,45 @@
-#include "Node.h"
+#include <iostream>
+#include <Array/Array.h>
+#include <Node.h>
 
 int main() {
-    Node<int> nodo1(5);
-    Node<int> nodo2(4);
-    Node<int> nodo3(3);
+    // Create an Array of integers
+    Array<int> array;
 
-    nodo1.setNext(&nodo2);
-    nodo2.setNext(&nodo3);
-    nodo3.setNext(nullptr);
+    // Create some nodes
+    auto node1 = new Node<int>(1);
+    auto node2 = new Node<int>(2);
+    auto node3 = new Node<int>(3);
 
-    nodo3.setPrev(&nodo2);
-    nodo2.setPrev(&nodo1);
-    nodo1.setPrev(nullptr);
+    // Push nodes to the array
+    array.push(node1);
+    array.push(node2);
+    array.push(node3);
 
-    Node<int>* current = &nodo1;
-    
-    while(current != nullptr) {
-        current->printNode();
-        current = current->getNext();
-    }
+    // Print the array
+    std::cout << "Array after pushing nodes: ";
+    array.printArray();
+    std::cout << std::endl;
+
+    // Insert a node at position 1
+    auto node4 = new Node<int>(4);
+    array.push(node4, 0);
+
+    std::cout << "Array after inserting node at position 1: ";
+    array.printArray();
+    std::cout << std::endl;
+
+    // Pop the last node
+    array.pop();
+    std::cout << "Array after popping the last node: ";
+    array.printArray();
+    std::cout << std::endl;
+
+    // Pop the node at position 1
+    array.pop(1);
+    std::cout << "Array after popping the node at position 1: ";
+    array.printArray();
+    std::cout << std::endl;
 
     return 0;
 }

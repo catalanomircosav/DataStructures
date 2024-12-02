@@ -25,6 +25,9 @@ class Node {
         /* ============ Utility ============ */
         void printNode() const;
 
+        /* ============ Overload di Operatori ============ */
+        bool operator==(const Node<T>& other) const;
+
     private:
         /* ============ attributi privati ============ */
         T data;                           // rappresenta il valore del nodo
@@ -67,4 +70,10 @@ void Node<T>::setPrev(Node<T>* prev) { this->prev = prev; }
 template<class T>
 void Node<T>::printNode() const {
     std::cout << "Data: " << data << std::endl;
+}
+
+/* ============ Overload di Operatori ============ */
+template<class T>
+bool Node<T>::operator==(const Node<T>& other) const {
+    return data == other.data;
 }
