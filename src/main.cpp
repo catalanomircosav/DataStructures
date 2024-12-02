@@ -1,29 +1,29 @@
 #include <iostream>
-#include <Array/Pila.h>
+#include <Array/Coda.h>
 
 int main() {
-    // Create a stack (Pila) of integers
-    Pila<int> stack;
+    // Crea una coda di interi
+    Coda<int> queue;
 
-    // Create some nodes
+    // Crea alcuni nodi
     auto node1 = new Node<int>(1);
     auto node2 = new Node<int>(2);
     auto node3 = new Node<int>(3);
 
-    // Push nodes onto the stack
-    stack.push(node1);
-    stack.push(node2);
-    stack.push(node3);
+    // Aggiungi nodi alla coda
+    queue.push(node1);
+    queue.push(node2);
+    queue.push(node3);
 
-    // Print the stack
-    std::cout << "Stack after pushing nodes: ";
-    stack.printArray();
+    // Stampa la coda
+    std::cout << "Coda dopo aver aggiunto i nodi: ";
+    queue.printArray();
     std::cout << std::endl;
 
-    // Pop the top node
-    stack.pop();
-    std::cout << "Stack after popping the top node: ";
-    stack.printArray();
+    // Rimuovi il primo nodo
+    queue.pop();
+    std::cout << "Coda dopo aver rimosso il primo nodo: ";
+    queue.printArray();
     std::cout << std::endl;
 
     return 0;
