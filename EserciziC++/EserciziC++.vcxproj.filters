@@ -15,11 +15,8 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\Lista.h">
-      <Filter>File di intestazione</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Nodo.h">
-      <Filter>File di intestazione</Filter>
-    </ClInclude>
+    <ClCompile Include="main.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
