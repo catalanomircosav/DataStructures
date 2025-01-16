@@ -34,14 +34,19 @@ namespace Lista {
 		void scriviLista(T, pos);
 		void insLista(T, pos);
 		void cancLista(pos);
+		void stampaLista();
 
-		void stampaLista(); // ! definita in Servizio.h
 
+		pos RicercaLista(T);
+		void OrdinaLista();
+		
+		// ? GETTER
+		Nodo<T>* getHead() const { return head; }
 		// ? attributi pubblici
 		pos corrente;
-		int size;
 
 	private:
+		int size;
 		Nodo<T>* head, * tail;
 	};
 }
@@ -191,4 +196,71 @@ void Lista::Lista<T>::cancLista(pos p) {
 
 	delete tmp;
 	size--;
+}
+
+template<typename T>
+void Lista::Lista<T>::OrdinaLista() {
+	assert(!listaVuota(), "Lista vuota.");
+
+	bool scambiato;
+	do {
+		scambiato = false;
+		Nodo<T>* tmp = head;
+
+		// Itera sui nodi della lista per confrontare e scambiare valori
+		while (tmp->leggiNext() != nullptr) {
+			if (tmp->leggiNodo() > tmp->leggiNext()->leggiNodo()) {
+				// Scambia i valori tra tmp e il nodo successivo
+				T tempValue = tmp->leggiNodo();
+				tmp->scriviNodo(tmp->leggiNext()->leggiNodo());
+				tmp->leggiNext()->scriviNodo(tempValue);
+				scambiato = true;
+			}
+			tmp = tmp->leggiNext(); // Vai al prossimo nodo
+		}
+	} while (scambiato); // Continua finché ci sono stati scambi
+}
+
+
+template<typename T>
+typename Lista::Lista<T>::pos Lista::Lista<T>::RicercaLista(T data) {
+	assert(!listaVuota(), "Lista vuota.");
+	// Ordina la lista
+	this->OrdinaLista();
+
+	// Posizione iniziale
+	corrente = this->primoLista();
+
+	Nodo<T>* tmp = head;
+
+	// Itera sulla lista per cercare il dato
+	while (corrente <= size && tmp != nullptr) {
+		if (tmp->leggiNodo() == data) {
+			return corrente; // Restituisci la posizione
+		}
+
+		corrente = this->succLista(corrente);
+		tmp = tmp->leggiNext();
+	}
+
+	// Se il dato non è trovato, restituisci -1
+	return -1;
+}
+
+template<typename T>
+void Lista::Lista<T>::stampaLista() {
+	assert((!listaVuota()), "Lista vuota.");
+
+	corrente = this->primoLista();
+	Nodo<T>* tmp = head;
+
+	// Itera finché tmp non è nullptr
+	while (corrente <= size && tmp != nullptr) {
+		std::cout << "[ " << tmp->leggiNodo() << " ]" << " -> ";
+		// Passa al nodo successivo
+		tmp = tmp->leggiNext();
+		corrente = this->succLista(corrente);
+	}
+
+	std::cout << "[ nullptr ] \n";
 }
