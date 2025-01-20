@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Nodo.h>
+#include <Array/Nodo.h>
 
 #define assert(cnd, msg) { \
     if(!cnd) { \
@@ -9,7 +9,7 @@
     } \
 } \
 
-namespace Lista {
+namespace Array {
 	template<typename T>
 	class Lista {
 
@@ -36,7 +36,6 @@ namespace Lista {
 		void cancLista(pos);
 		void stampaLista();
 
-
 		pos RicercaLista(T);
 		void OrdinaLista();
 		
@@ -44,42 +43,43 @@ namespace Lista {
 		Nodo<T>* getHead() const { return head; }
 		// ? attributi pubblici
 		pos corrente;
+		
+	protected:
+		int size;
 
 	private:
-		int size;
 		Nodo<T>* head, * tail;
 	};
 }
 
 // ? implementazione
-template<typename T>
-Lista::Lista<T>::Lista() : head(nullptr), tail(nullptr), size(0), corrente(0) {}
 
 template<typename T>
-Lista::Lista<T>::~Lista() {
+Array::Lista<T>::Lista() : head(nullptr), tail(nullptr), size(0), corrente(0) {}
+
+template<typename T>
+Array::Lista<T>::~Lista() {
 
 	delete head; head = nullptr;
 	delete tail; tail = nullptr;
 }
 
 template<typename T>
-bool Lista::Lista<T>::listaVuota() const {
-	if (size > 0 && head->leggiNext() != nullptr) {
-		return false;
-	}
+bool Array::Lista<T>::listaVuota() const {
+	if (size > 0) return false;
 
 	return true;
 }
 
 template<typename T>
-bool Lista::Lista<T>::fineLista(pos p) const {
+bool Array::Lista<T>::fineLista(pos p) const {
 	assert(((1 <= p) && (p <= size + 1)), "Posizione non valida.");
 
 	return p == size + 1;
 }
 
 template<typename T>
-T Lista::Lista<T>::leggiLista(pos p) {
+T Array::Lista<T>::leggiLista(pos p) {
 	assert(((1 <= p) && (p <= size)), "Posizione non valida.");
 
 	Nodo<T>* tmp = head;
@@ -96,21 +96,21 @@ T Lista::Lista<T>::leggiLista(pos p) {
 
 
 template<typename T>
-typename Lista::Lista<T>::pos Lista::Lista<T>::succLista(pos p) const {
+typename Array::Lista<T>::pos Array::Lista<T>::succLista(pos p) const {
 	assert(((1 <= p) && (p <= size)), "Posizione non valida.");
 
 	return p + 1;
 }
 
 template<typename T>
-typename Lista::Lista<T>::pos Lista::Lista<T>::precLista(pos p) const {
+typename Array::Lista<T>::pos Array::Lista<T>::precLista(pos p) const {
 	assert(((2 <= p) && (p <= size)), "Posizione non valida.");
 
 	return p - 1;
 }
 
 template<typename T>
-void Lista::Lista<T>::scriviLista(T data, pos p) {
+void Array::Lista<T>::scriviLista(T data, pos p) {
 	assert(((1 <= p) && (p <= size)), "Posizione non valida.");
 
 	Nodo<T>* tmp = head;
@@ -125,13 +125,13 @@ void Lista::Lista<T>::scriviLista(T data, pos p) {
 
 
 template<typename T>
-void Lista::Lista<T>::insLista(T data, pos p) {
+void Array::Lista<T>::insLista(T data, pos p) {
 	assert(((1 <= p) && (p <= size + 1)), "Posizione non valida.");
 
 	Nodo<T>* nuovo = new Nodo<T>(data);
 
 	if (p == 1) {
-		if (this->listaVuota()) {
+		if (listaVuota()) {
 			// inserimento in prima posizione se la lista è vuota
 			head = nuovo;
 			tail = nuovo;
@@ -168,7 +168,7 @@ void Lista::Lista<T>::insLista(T data, pos p) {
 }
 
 template<typename T>
-void Lista::Lista<T>::cancLista(pos p) {
+void Array::Lista<T>::cancLista(pos p) {
 	assert(((1 <= p) && (p <= size)), "Posizione non valida.");
 	assert(!listaVuota(), "Lista vuota.");
 
@@ -199,7 +199,7 @@ void Lista::Lista<T>::cancLista(pos p) {
 }
 
 template<typename T>
-void Lista::Lista<T>::OrdinaLista() {
+void Array::Lista<T>::OrdinaLista() {
 	assert(!listaVuota(), "Lista vuota.");
 
 	bool scambiato;
@@ -223,7 +223,7 @@ void Lista::Lista<T>::OrdinaLista() {
 
 
 template<typename T>
-typename Lista::Lista<T>::pos Lista::Lista<T>::RicercaLista(T data) {
+typename Array::Lista<T>::pos Array::Lista<T>::RicercaLista(T data) {
 	assert(!listaVuota(), "Lista vuota.");
 	// Ordina la lista
 	this->OrdinaLista();
@@ -248,8 +248,8 @@ typename Lista::Lista<T>::pos Lista::Lista<T>::RicercaLista(T data) {
 }
 
 template<typename T>
-void Lista::Lista<T>::stampaLista() {
-	assert((!listaVuota()), "Lista vuota.");
+void Array::Lista<T>::stampaLista() {
+	assert(size >= 1, "Lista vuota.");
 
 	corrente = this->primoLista();
 	Nodo<T>* tmp = head;
