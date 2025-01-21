@@ -10,17 +10,5 @@ int main() {
     coda->inCoda(20);
     coda->inCoda(30);
 
-    std::cout << "Tutta la coda:\n";
-    coda->stampaCoda();
-
-    std::cout << "Rimuovo elemento:\n";
-    coda->fuoriCoda();
-    coda->stampaCoda();
-
-    std::cout << "Inserisco elemento:\n";
-    coda->inCoda(40);
-
-    coda->stampaCoda();
-
     return 0;
 }
