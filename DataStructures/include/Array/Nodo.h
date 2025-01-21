@@ -1,7 +1,13 @@
 #pragma once
-
 // ? LIBRERIE
 #include <iostream>
+
+#define assert(cnd, msg) { \
+    if(!cnd) { \
+        std::cerr << "Errore: " << msg << std::endl; \
+        std::abort(); \
+    } \
+} \
 
 // ! DEFINIZIONE CLASSE TEMPLATE NODO
 namespace Array {

@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\Array\Coda.h" />
     <ClInclude Include="include\Array\Lista.h" />
     <ClInclude Include="include\Array\Nodo.h" />
     <ClInclude Include="include\Array\Pila.h" />

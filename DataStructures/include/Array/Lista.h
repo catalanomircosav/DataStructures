@@ -2,13 +2,6 @@
 
 #include <Array/Nodo.h>
 
-#define assert(cnd, msg) { \
-    if(!cnd) { \
-        std::cerr << "Errore: " << msg << std::endl; \
-        std::abort(); \
-    } \
-} \
-
 namespace Array {
 	template<typename T>
 	class Lista {
@@ -249,13 +242,13 @@ typename Array::Lista<T>::pos Array::Lista<T>::RicercaLista(T data) {
 
 template<typename T>
 void Array::Lista<T>::stampaLista() {
-	assert(size >= 1, "Lista vuota.");
+	// assert(size >= 1, "Lista vuota.");
 
 	corrente = this->primoLista();
 	Nodo<T>* tmp = head;
 
 	// Itera finché tmp non è nullptr
-	while (corrente <= size && tmp != nullptr) {
+	while (corrente <= size) {
 		std::cout << "[ " << tmp->leggiNodo() << " ]" << " -> ";
 		// Passa al nodo successivo
 		tmp = tmp->leggiNext();
