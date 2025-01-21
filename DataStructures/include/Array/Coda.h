@@ -18,7 +18,6 @@ namespace Array {
 		void fuoriCoda();
 		void inCoda(T);
 
-		void stampaCoda() const;
 	private:
 		int size;
 		Nodo<T>* head, * tail;
@@ -69,7 +68,7 @@ void Array::Coda<T>::fuoriCoda() {
 
 template<typename T>
 void Array::Coda<T>::inCoda(T data) {
-	
+
 	val nuovo = new Nodo<T>(data);
 	if (tail) {
 		tail->scriviNext(nuovo);
@@ -82,19 +81,3 @@ void Array::Coda<T>::inCoda(T data) {
 	tail = nuovo;
 	size++;
 }
-template<typename T>
-void Array::Coda<T>::stampaCoda() const {
-	if (codaVuota()) {
-		std::cout << "Coda vuota.\n";
-		return;
-	}
-
-	Nodo<T>* corrente = head;
-	std::cout << "Coda: ";
-	while (corrente != nullptr) {
-		std::cout << corrente->leggiNodo() << " ";
-		corrente = corrente->leggiNext();
-	}
-	std::cout << "\n";
-}
-
