@@ -15,18 +15,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\main.cpp">
-      <Filter>File di origine</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="include\Servizio.h">
+    <ClInclude Include="include\Array\Lista.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
-    <ClInclude Include="include\Lista.h">
+    <ClInclude Include="include\Array\Nodo.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
-    <ClInclude Include="include\Nodo.h">
+    <ClInclude Include="include\Array\Pila.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Array\Coda.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
   </ItemGroup>

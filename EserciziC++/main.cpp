@@ -1,29 +1,26 @@
-#include <Lista.h>
+#include <iostream>
+#include <Array/Coda.h>
 
-int main(int argc, char** argv) {
-    Lista::Lista<int>* lista = new Lista::Lista<int>();
+int main() {
+    // Creazione della coda di interi
+    Array::Coda<int>* coda = new Array::Coda<int>();
 
-    lista->insLista(7, 1);
-    lista->insLista(3, 2);
-    lista->insLista(10, 3);
-    lista->insLista(1, 4);
+    // Aggiunta di elementi alla coda
+    coda->inCoda(10);
+    coda->inCoda(20);
+    coda->inCoda(30);
 
-    std::cout << "Lista prima della ricerca:\n";
-    lista->stampaLista();
+    std::cout << "Tutta la coda:\n";
+    coda->stampaCoda();
 
-    // Ricerca di un elemento
-    int valore = 10;
-    auto posizione = lista->RicercaLista(valore);
-    std::cout << "Lista Ordinata:\n";
-    lista->stampaLista();
+    std::cout << "Rimuovo elemento:\n";
+    coda->fuoriCoda();
+    coda->stampaCoda();
 
-    if (posizione != -1) {
-        std::cout << "Valore " << valore << " trovato in posizione: " << posizione << "\n";
-    }
-    else {
-        std::cout << "Valore " << valore << " non trovato nella lista.\n";
-    }
+    std::cout << "Inserisco elemento:\n";
+    coda->inCoda(40);
 
-    system("pause");
+    coda->stampaCoda();
+
     return 0;
 }
