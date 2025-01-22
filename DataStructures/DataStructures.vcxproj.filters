@@ -27,5 +27,8 @@
     <ClInclude Include="include\Array\Coda.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
+    <ClInclude Include="include\Hash\Dizionario.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

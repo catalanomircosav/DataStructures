@@ -23,6 +23,7 @@
     <ClInclude Include="include\Array\Lista.h" />
     <ClInclude Include="include\Array\Nodo.h" />
     <ClInclude Include="include\Array\Pila.h" />
+    <ClInclude Include="include\Hash\Dizionario.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

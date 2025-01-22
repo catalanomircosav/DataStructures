@@ -1,14 +1,30 @@
+#include <Hash/Dizionario.h>
 #include <iostream>
-#include <Array/Coda.h>
+#include <vector>
+
+template<typename T, typename U>
+void printDizionario(const Dizionario<T, U>& dict, const std::vector<T>& keys) {
+    for (const T& key : keys) {
+        std::cout << key << ": " << dict[key] << std::endl;
+    }
+}
 
 int main() {
-    // Creazione della coda di interi
-    Array::Coda<int>* coda = new Array::Coda<int>();
+    Dizionario<std::string, int> dict;
 
-    // Aggiunta di elementi alla coda
-    coda->inCoda(10);
-    coda->inCoda(20);
-    coda->inCoda(30);
+    dict.insert({ "Uno", 1 });
+    dict.insert({ "Due", 2 });
+    dict.insert({ "Tre", 3 });
+
+    std::vector<std::string> keys = { "Uno", "Due", "Tre" };
+    std::cout << "Contenuto del dizionario:" << std::endl;
+    printDizionario(dict, keys);
+
+    dict.remove("Due");
+
+    std::cout << "\nDopo la rimozione di 'Due':" << std::endl;
+    keys = { "Uno", "Tre" };
+    printDizionario(dict, keys);
 
     return 0;
 }
