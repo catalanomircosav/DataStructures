@@ -23,7 +23,12 @@
     <ClInclude Include="include\Array\Lista.h" />
     <ClInclude Include="include\Array\Nodo.h" />
     <ClInclude Include="include\Array\Pila.h" />
+    <ClInclude Include="include\Grafi\AlberoBin.h" />
+    <ClInclude Include="include\Grafi\Nodo.h" />
     <ClInclude Include="include\Hash\Dizionario.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
@@ -78,7 +83,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Users\mirco\Documents\coding\DataStructures\DataStructures\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\Mirco Catalano\Documents\coding\DataStructures\DataStructures\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
